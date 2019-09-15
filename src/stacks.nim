@@ -1,5 +1,8 @@
 ## Pure Nim stack implementation based on sequences.
 ##
+## * [Repo](https://github.com/rustomax/nim-stacks)
+## * [Docs](https://rustomax.github.io/dev/nim/stacks/stacks.html)
+##
 ## **Example:**
 ##
 ## .. code-block:: Nim
