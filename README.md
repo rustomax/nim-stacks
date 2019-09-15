@@ -3,6 +3,11 @@ Pure Nim stack implementation based on sequences
 
 * [Full documentation](https://rustomax.github.io/dev/nim/stacks/stacks.html)
 
+### Installation
+```sh
+nimble install stacks
+```
+
 ### Example
 
 ```nim
