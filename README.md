@@ -7,6 +7,7 @@ Pure Nim stack implementation based on sequences
 
 ```nim
 # Reverting a string using a stack
+import stacks
 
 let a = "Hello, World!"
 var s = Stack[char]()
