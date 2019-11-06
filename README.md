@@ -13,19 +13,25 @@ nimble install stacks
 ### Example
 
 ```nim
-# Reverting a string using a stack
 import stacks
 
-let a = "Hello, World!"
-var s = Stack[char]()
+proc isPaired*(s: string): bool =
+    ## Algorithm to detect unbalanced brackets using a stack
+    var stack = Stack[char]()
+    
+    for c in s:
+        case c:
+            of '{': stack.push('}')
+            of '[': stack.push(']')
+            of '(': stack.push(')')
+            of '}', ']', ')':
+                if stack.empty or stack.pop() != c: return false
+            else: discard
 
-for letter in a:
-    s.push(letter)
+    stack.empty()
 
-var b: string
-while not s.empty:
-    b.add(s.pop)
-
-assert b == "!dlroW ,olleH"
+when isMainModule:
+    assert isPaired("(((185 + 223.85) * 15) - 543)/2") == true
+    assert isPaired("for (i = 1; i < 11; ++i)\n{printf(\"i\");}\nreturn 0;}\n}") == false
 ```
 
