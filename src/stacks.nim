@@ -13,7 +13,7 @@
 ##       s.push(letter)
 ##
 ##   var b: string
-##   while not s.empty:
+##   while not s.isEmpty:
 ##       b.add(s.pop)
 ##
 ##   assert b == "!dlroW ,olleH"
@@ -47,14 +47,17 @@ proc len* [T](s: Stack[T]): int =
     ##   assert a.len == 2
     s.data.len()
 
-proc empty* [T](s: Stack[T]): bool =
+proc empty* [T](s: Stack[T]): bool {.deprecated: "use isEmpty() instead".} =
+    s.data.len() == 0
+
+proc isEmpty* [T](s: Stack[T]): bool =
     ## Returns `true` if stack contains no elements, `false` otherwise.
     ##
     ## .. code-block:: Nim
     ##   var a = newStack[int]()
-    ##   assert a.empty == true
+    ##   assert a.isEmpty == true
     ##   a.push(10)
-    ##   assert a.empty == false
+    ##   assert a.isEmpty == false
     s.data.len() == 0
 
 proc push* [T](s: var Stack[T], element: T) =
@@ -74,7 +77,7 @@ proc pop* [T](s: var Stack[T]): T {.raises: [EStackEmpty].} =
     ##   a.push(10)
     ##   discard a.pop()
     ##   doAssertRaises(EStackEmpty, echo a.pop())
-    if not s.empty:
+    if not s.isEmpty:
         result = s.data[^1]
         s.data.setLen s.data.len - 1
     else:
@@ -85,8 +88,10 @@ proc clear* [T](s: var Stack[T]) =
     ##
     ## .. code-block:: Nim
     ##   var a = newStack[int]()
-    ##   assert a.empty == true
-    if not s.empty:
+    ##   a.push(10)
+    ##   a.clear()
+    ##   assert a.isEmpty == true
+    if not s.isEmpty:
         s.data.setLen 0
 
 proc toSeq* [T](s: Stack[T]): seq[T] =
@@ -106,7 +111,7 @@ proc `$`* [T](s: Stack[T]): string =
     ##   a.push(10); a.push(20)
     ##   assert $a == "Stack[10, 20]"
     result = "Stack["
-    if not s.empty():
+    if not s.isEmpty():
         for i in 0 .. s.data.high() - 1:
             result &= $s.data[i]
             result &= ", "
@@ -117,9 +122,9 @@ when isMainModule:
     block:
         var a = newStack[int]()
         a.push(10)
-        assert a.empty == false
+        assert a.isEmpty == false
         discard a.pop()
-        assert a.empty == true
+        assert a.isEmpty == true
 
     block:
         var a = newStack[int]()

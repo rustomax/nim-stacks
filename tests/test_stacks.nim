@@ -24,12 +24,20 @@ test "pop on empty stack raises exception":
   var a = newStack[int]()
   expect EStackEmpty:
     discard a.pop()
-  
+
 test "can clear stack":
   var a = newStack[int]()
   a.push(10)
   a.clear()
   check a.len() == 0
+  check a.isEmpty() == true
+
+test "can correctly check if stack is empty":
+  var a = newStack[int]()
+  a.push(10)
+  check a.isEmpty() == false
+  a.clear()
+  check a.isEmpty() == true
 
 test "can get sequence representation of the stack":
   var a = newStack[int]()

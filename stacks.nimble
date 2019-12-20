@@ -1,6 +1,6 @@
 # Package
 
-version       = "0.1.0"
+version       = "0.4.0"
 author        = "Max Skybin"
 description   = "Pure Nim stack implementation based on sequences."
 license       = "MIT"

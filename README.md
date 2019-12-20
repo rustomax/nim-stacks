@@ -25,10 +25,10 @@ proc isPaired*(s: string): bool =
             of '[': stack.push(']')
             of '(': stack.push(')')
             of '}', ']', ')':
-                if stack.empty or stack.pop() != c: return false
+                if stack.isEmpty or stack.pop() != c: return false
             else: discard
 
-    stack.empty()
+    stack.isEmpty()
 
 when isMainModule:
     assert isPaired("(((185 + 223.85) * 15) - 543)/2") == true
