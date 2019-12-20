@@ -117,31 +117,3 @@ proc `$`* [T](s: Stack[T]): string =
             result &= ", "
         result &= $s.data[^1]
     result &= "]"
-
-when isMainModule:
-    block:
-        var a = newStack[int]()
-        a.push(10)
-        assert a.isEmpty == false
-        discard a.pop()
-        assert a.isEmpty == true
-
-    block:
-        var a = newStack[int]()
-        a.push(10)
-
-    block:
-        var a = newStack[int]()
-        a.push(10); a.push(20)
-        assert $a == "Stack[10, 20]"
-
-    block:
-        var a = newStack[int]()
-        a.push(10); a.push(20)
-        assert a.len == 2
-
-    block:
-        var a = newStack[int]()
-        a.push(10)
-        discard a.pop()
-        doAssertRaises(EStackEmpty, echo a.pop())
