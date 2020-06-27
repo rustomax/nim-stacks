@@ -21,7 +21,7 @@
 
 import math
 
-type EStackEmpty* = object of Exception
+type EStackEmpty* = object of CatchableError
 
 type
     Stack* [T] = object

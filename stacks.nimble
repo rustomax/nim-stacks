@@ -1,6 +1,6 @@
 # Package
 
-version       = "0.4.0"
+version       = "0.4.1"
 author        = "Max Skybin"
 description   = "Pure Nim stack implementation based on sequences."
 license       = "MIT"
@@ -8,4 +8,4 @@ srcDir        = "src"
 
 # Dependencies
 
-requires "nim >= 0.20.2"
+requires "nim >= 1.2.4"
