@@ -83,6 +83,40 @@ proc pop* [T](s: var Stack[T]): T {.raises: [EStackEmpty].} =
     else:
         raise newException(EStackEmpty, "Cannot pop an empty stack")
 
+proc popUnsafe* [T](s: var Stack[T]): T =
+    ## Pops the top element from the stack without checking if it's not empty.
+    ## Make sure the stack is not empty.
+    ##
+    ## .. code-block:: Nim
+    ##   var a = newStack[int]()
+    ##   a.push(10)
+    ##   check(a.popUnsafe() == 10)
+    result = s.data[^1]
+    s.data.setLen s.data.len - 1
+
+proc peek* [T](s: Stack[T]): T {.raises: [EStackEmpty].} =
+    ## Peeks the top element from the stack.
+    ## Raises `EStackEmpty` exception if the stack is empty.
+    ##
+    ## .. code-block:: Nim
+    ##   var a = newStack[int]()
+    ##   a.push(10)
+    ##   check(a.peek() == 10)
+    if not s.isEmpty:
+        result = s.data[^1]
+    else:
+        raise newException(EStackEmpty, "Cannot peek an empty stack")
+
+proc peekUnsafe* [T](s: Stack[T]): T =
+    ## Peeks the top element from the stack without checking if it's not empty.
+    ## Make sure the stack is not empty.
+    ##
+    ## .. code-block:: Nim
+    ##   var a = newStack[int]()
+    ##   a.push(10)
+    ##   check(a.peekUnsafe() == 10)
+    s.data[^1]
+
 proc clear* [T](s: var Stack[T]) =
     ## Empties the stack. Does nothing if the stack is already empty.
     ##
