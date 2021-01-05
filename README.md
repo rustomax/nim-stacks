@@ -5,6 +5,8 @@ Pure Nim stack implementation based on sequences
 
 * [Full documentation](https://rustomax.github.io/dev/nim/stacks/stacks.html)
 
+Version 0.4.2
+
 ### Installation
 ```sh
 nimble install stacks

@@ -22,10 +22,19 @@ test "can pop from non-empty stack":
   a.push(11)
   check a.popUnsafe() == 11
 
+test "can popUnsafe from non-empty stack":
+  var a = newStack[int]()
+  a.push(10)
+  check a.popUnsafe() == 10
+
 test "can peek from non-empty stack":
   var a = newStack[int]()
   a.push(10)
   check a.peek() == 10
+
+test "can peekUnsafe from non-empty stack":
+  var a = newStack[int]()
+  a.push(10)
   check a.peekUnsafe() == 10
 
 test "pop on empty stack raises exception":
